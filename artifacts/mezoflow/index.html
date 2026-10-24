@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script>
+      try {
+        const preferences = JSON.parse(localStorage.getItem('mezoflow-preferences') || '{}');
+        const theme = preferences.theme === 'light' ? 'light' : 'dark';
+        document.documentElement.dataset.theme = theme;
+        if (theme === 'dark') document.documentElement.classList.add('dark');
+      } catch {
+        document.documentElement.dataset.theme = 'dark';
+        document.documentElement.classList.add('dark');
+      }
+    </script>
+    <title>MezoFlow</title>
+    <meta name="description" content="A Bitcoin-native command center for live Mezo Testnet balances, MUSD transfers, and verified ecosystem resources." />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="MezoFlow" />
+    <meta property="og:description" content="A Bitcoin-native command center for live Mezo Testnet balances, MUSD transfers, and verified ecosystem resources." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="MezoFlow" />
+    <meta name="twitter:description" content="A Bitcoin-native command center for live Mezo Testnet balances, MUSD transfers, and verified ecosystem resources." />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

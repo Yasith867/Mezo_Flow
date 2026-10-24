@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "MezoFlow"
+description = "A Bitcoin-native DeFi command center for tracking MUSD and MEZO, exploring Mezo ecosystem resources, and understanding wallet assets through verified network data."
+version = "1.0.0"
+id = "artifacts/mezoflow"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23806
+
+[services.development]
+run = "pnpm --filter @workspace/mezoflow run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/mezoflow", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/mezoflow/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23806"
+BASE_PATH = "/"
